@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template</title>
+  </head>
+  <style>
+    body{
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      text-align: center;
+    }
+  </style>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script type="text/babel">
+    // Your  code will go here
+    function Todo(){
+        const [inputValue, setInputValue] = React.useState("")
+        function handleAddTodo(){
+            console.log(inputValue);
+            let body = {name: inputValue, status: false}
+            axios.post("http://localhost:8080/todos", body).then(()=>console.log("success")).catch(()=>console.log("failure"));
+            axios.get
+        }
+        return(
+            <div>
+                <input type="text" onChange={(e)=>setInputValue(e.target.value )} value = {inputValue}    />
+                <button onClick= {handleAddTodo}>Add Todo</button>
+                
+                </div>
+        )
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(< Todo />);
+  </script>
+</html>
